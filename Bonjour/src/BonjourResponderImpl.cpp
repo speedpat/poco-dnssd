@@ -80,7 +80,7 @@ ServiceHandle BonjourResponderImpl::registerService(const Service& service, int 
 	DNSServiceFlags flags(0);
 	uint32_t intf = (options & DNSSDResponder::REG_LOCAL_ONLY) ? kDNSServiceInterfaceIndexLocalOnly : service.networkInterface();
 	if (options & DNSSDResponder::REG_NO_AUTORENAME) flags |= kDNSServiceFlagsNoAutoRename;
-	if (options & DNSSDResponder::REG_NON_BROWSABLE) flags |= kDNSServiceFlagsNonBrowsable;
+/*	if (options & DNSSDResponder::REG_NON_BROWSABLE) flags |= kDNSServiceFlagsNonBrowsable;*/
 	std::string txtRecord = createTXTRecord(service.properties());
 	DNSServiceErrorType err = DNSServiceRegister(&sdRef, flags, intf, service.name().empty() ? 0 : service.name().c_str(), service.type().c_str(), service.domain().empty() ? 0 : service.domain().c_str(), service.host().empty() ? 0 : service.host().c_str(), Poco::ByteOrder::toNetwork(service.port()), txtRecord.size(), txtRecord.empty() ? 0 : txtRecord.data(), Poco::DNSSD::Bonjour::onRegisterServiceReply, this);
 	if (err == kDNSServiceErr_NoError)

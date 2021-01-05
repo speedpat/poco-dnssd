@@ -8,6 +8,8 @@
 
 include $(POCO_BASE)/build/rules/global
 
+INCLUDE += -I$(PROJECT_BASE)/nanoleaf/poco-dnssd/include
+
 objects = \
 	BonjourBrowserImpl BonjourResponderImpl EventLoop
 
