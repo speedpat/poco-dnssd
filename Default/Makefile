@@ -18,4 +18,4 @@ endif
 .PHONY: projects
 clean all: projects
 projects:
-	$(MAKE) -C $(POCO_BASE)/DNSSD/$(DNSSDLibrary) $(MAKECMDGOALS)
+	$(MAKE) -C ../$(DNSSDLibrary) $(MAKECMDGOALS)
